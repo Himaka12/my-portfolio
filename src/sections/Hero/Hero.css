@@ -1,0 +1,6 @@
+.hero-section {
+  background-color: var(--bg-primary);
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+}
