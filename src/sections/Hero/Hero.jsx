@@ -39,7 +39,7 @@ function Hero() {
 
             {/* Description Paragraph */}
             <p className="hero-subtext">
-              I'm [Your Name], an IT undergraduate passionate about software engineering, artificial intelligence, and machine learning. I enjoy building meaningful digital experiences and exploring innovative technologies.
+              I'm Himaka Uthpala, an IT undergraduate passionate about software engineering, artificial intelligence, and machine learning. I enjoy building meaningful digital experiences and exploring innovative technologies.
             </p>
 
             {/* Primary CTA (Soft light-grey pill with arrow) */}
@@ -59,7 +59,7 @@ function Hero() {
             {/* Understated Editorial Social Links (Bottom-Left) */}
             <div className="hero-social-footer">
               <a
-                href="https://github.com"
+                href="https://github.com/Himaka12"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-text-link"
@@ -68,7 +68,7 @@ function Hero() {
               </a>
               <span className="social-slash">/</span>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHJKAiVnjNHHgAAAaHUY-0oXKZimpxuP1F4y6QVUr342rEak7kgKPJtiofu2Or2rsA8TK0OiXoMhdm-LP_L4DLwfbLMBeANEN94PcG67GQamr03uBn0e9aDfa98ZwgJwdpFNF4=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fhimaka-uthpala-2262633a7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-text-link"
@@ -77,8 +77,7 @@ function Hero() {
               </a>
               <span className="social-slash">/</span>
               <a
-                href="#contact"
-                onClick={(e) => handleScrollTo(e, 'contact')}
+                href="mailto:himakawork@gmail.com"
                 className="social-text-link"
               >
                 Email
@@ -107,21 +106,21 @@ function Hero() {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Minimal Vertical 'SCROLL DOWN' Indicator on Right Edge */}
-        <div className="hero-scroll-edge">
-          <a
-            href="#about"
-            onClick={(e) => handleScrollTo(e, 'about')}
-            className="scroll-edge-link"
-            aria-label="Scroll down"
-          >
-            <span className="scroll-edge-text">SCROLL DOWN</span>
-            <div className="scroll-edge-line">
-              <span className="scroll-edge-arrow">↓</span>
-            </div>
-          </a>
-        </div>
+      {/* Minimal Vertical 'SCROLL DOWN' Indicator on Right Edge (Anchored lower at bottom) */}
+      <div className="hero-scroll-edge">
+        <a
+          href="#about"
+          onClick={(e) => handleScrollTo(e, 'about')}
+          className="scroll-edge-link"
+          aria-label="Scroll down"
+        >
+          <span className="scroll-edge-text">SCROLL DOWN</span>
+          <div className="scroll-edge-line">
+            <span className="scroll-edge-arrow">↓</span>
+          </div>
+        </a>
       </div>
     </section>
   );

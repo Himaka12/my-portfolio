@@ -7,6 +7,7 @@
   position: relative;
   min-height: calc(100vh - 76px);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
@@ -181,8 +182,8 @@
 
 .hero-scroll-edge {
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: 40px;
+  bottom: 35px;
   z-index: 4;
 }
 
@@ -250,10 +251,9 @@
   }
 
   .hero-scroll-edge {
-    position: static;
-    margin-top: 2rem;
-    display: flex;
-    justify-content: flex-end;
+    position: absolute;
+    right: 30px;
+    bottom: 28px;
   }
 }
 
@@ -274,5 +274,11 @@
 
   .hero-headline {
     font-size: 2.35rem;
+  }
+
+  .hero-scroll-edge {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
   }
 }

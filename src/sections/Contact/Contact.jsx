@@ -14,7 +14,7 @@ function Contact() {
   const [copied, setCopied] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const contactEmail = 'alex.dev@example.com'; // [Editable Placeholder]
+  const contactEmail = 'himakawork@gmail.com';
 
   const handleChange = (e) => {
     const { name, value } = e.target;

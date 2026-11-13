@@ -11,9 +11,9 @@ export const experience = [
     id: 'edu-1',
     type: 'education',
     title: 'Bachelor of Science in Information Technology',
-    organization: '[Your University / Institution Name]',
-    location: '[City, Country]',
-    period: '2022 — Present (Expected 2026)',
+    organization: '[SLIIT]',
+    location: '[Malabe, Sri Lanka]',
+    period: '2024 — Present (Expected 2028)',
     status: 'In Progress',
     description: [
       'Focusing on Software Engineering, Artificial Intelligence, and Modern Database Architecture.',
