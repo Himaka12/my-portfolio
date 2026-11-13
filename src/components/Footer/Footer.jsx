@@ -1,10 +1,11 @@
+import { scrollTo } from '../../utils/smoothScroll';
 import './Footer.css';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollTo(0, { offset: 0 });
   };
 
   return (

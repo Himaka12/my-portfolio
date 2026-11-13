@@ -23,6 +23,7 @@
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
   box-shadow: var(--shadow-subtle);
+  transform: translateZ(0);
 }
 
 .contact-card-label {
@@ -154,6 +155,7 @@
   border-radius: var(--radius-lg);
   padding: var(--spacing-2xl);
   box-shadow: var(--shadow-sm);
+  transform: translateZ(0);
 }
 
 .form-heading {

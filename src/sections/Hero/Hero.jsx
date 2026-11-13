@@ -1,5 +1,6 @@
 import portraitImg from '../../assets/images/portrait.jpg';
 import Button from '../../components/Button';
+import { scrollTo } from '../../utils/smoothScroll';
 import './Hero.css';
 
 /**
@@ -16,10 +17,7 @@ function Hero() {
 
   const handleScrollTo = (e, targetId) => {
     e.preventDefault();
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-    }
+    scrollTo(`#${targetId}`);
   };
 
   return (

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { scrollTo } from '../../utils/smoothScroll';
 import './Navbar.css';
 
 const NAV_LINKS = [
@@ -15,30 +16,61 @@ function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = NAV_LINKS.map((link) => document.getElementById(link.id));
-      const scrollPosition = window.scrollY + 140;
+    let cachedOffsets = [];
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(NAV_LINKS[i].id);
+    // Pre-calculate section offsets to avoid layout thrashing during scroll
+    const updateCachedOffsets = () => {
+      cachedOffsets = NAV_LINKS.map((link) => {
+        const el = document.getElementById(link.id);
+        if (!el) return null;
+        const rect = el.getBoundingClientRect();
+        return {
+          id: link.id,
+          top: rect.top + window.scrollY,
+        };
+      }).filter(Boolean);
+    };
+
+    updateCachedOffsets();
+
+    let rafId = null;
+    const checkActiveSection = () => {
+      const scrollPosition = window.scrollY + 140;
+      let currentId = NAV_LINKS[0].id;
+
+      for (let i = cachedOffsets.length - 1; i >= 0; i--) {
+        if (scrollPosition >= cachedOffsets[i].top) {
+          currentId = cachedOffsets[i].id;
           break;
         }
       }
+
+      // Only update state if active section has actually changed
+      setActiveSection((prev) => (prev !== currentId ? currentId : prev));
+    };
+
+    const handleScroll = () => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        checkActiveSection();
+        rafId = null;
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', updateCachedOffsets, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', updateCachedOffsets);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const handleLinkClick = (e, targetId) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-    }
+    scrollTo(`#${targetId}`);
   };
 
   return (
