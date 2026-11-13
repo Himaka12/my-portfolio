@@ -1,0 +1,21 @@
+.section-header-block {
+  margin-bottom: var(--spacing-3xl);
+  position: relative;
+}
+
+.section-header-block.align-center {
+  text-align: center;
+}
+
+.section-header-block.align-center .section-eyebrow {
+  justify-content: center;
+}
+
+.section-header-block.align-center .section-eyebrow::before {
+  display: none;
+}
+
+.section-header-block.align-center .section-description {
+  margin-left: auto;
+  margin-right: auto;
+}

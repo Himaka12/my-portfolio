@@ -1,7 +1,2 @@
-/**
- * Common / Reusable UI Components
- * 
- * Place shared UI primitives here (e.g. Card, Modal, Input, Badge, Container).
- */
-
-export {};
+export { default as ParticleField } from './ParticleField';
+export { default as SectionHeader } from './SectionHeader';

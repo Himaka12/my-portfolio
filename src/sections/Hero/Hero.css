@@ -1,6 +1,278 @@
-.hero-section {
-  background-color: var(--bg-primary);
-  min-height: 40vh;
+/* ==========================================================================
+   Hero Section Styling: Full-Screen Minimalist Apple-Inspired Editorial
+   Clean circular portrait with subtle ambient depth, zero decorative clutter
+   ========================================================================== */
+
+.hero-viewport-section {
+  position: relative;
+  min-height: calc(100vh - 76px);
   display: flex;
   align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  padding: var(--spacing-2xl) 0;
+  overflow: hidden;
+}
+
+/* Container: Full-Bleed Whitespace (Uninterrupted Clean White) */
+.hero-full-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* Asymmetrical Two-Column Composition */
+.hero-columns-layout {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  align-items: center;
+  gap: var(--spacing-3xl);
+}
+
+/* ==========================================================================
+   Left Column: Typography & Content
+   ========================================================================== */
+
+.hero-left-col {
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+/* Main Heading (Large bold typography, two lines on desktop) */
+.hero-headline {
+  font-size: clamp(2.75rem, 5.2vw, 4.35rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-bottom: 1.75rem;
+}
+
+.headline-line {
+  display: block;
+}
+
+/* Subtext Description */
+.hero-subtext {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: 440px;
+  margin-bottom: 2.25rem;
+}
+
+/* CTA Pill Button (Reference 'SEE MY WORKS ->' Style) */
+.hero-cta-area {
+  margin-bottom: 1rem;
+}
+
+.hero-minimal-cta {
+  background-color: #efefef !important;
+  color: #111111 !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  padding: 0.85rem 1.85rem !important;
+  border-radius: var(--radius-full) !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.hero-minimal-cta:hover {
+  background-color: #e2e2e2 !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Understated Social Links (Bottom-Left) */
+.hero-social-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 3.5rem;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.social-text-link {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity var(--transition-fast);
+}
+
+.social-text-link:hover {
+  opacity: 0.6;
+}
+
+.social-slash {
+  color: #d4d4d4;
+  font-size: 12px;
+  user-select: none;
+}
+
+/* ==========================================================================
+   Right Column: Soft Ambient Glow + Perfect Circular Portrait
+   ========================================================================== */
+
+.hero-right-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-art-stage {
+  position: relative;
+  width: 100%;
+  height: 540px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Very Subtle Soft Circular Ambient Glow Behind Portrait */
+.oversized-circle-bg {
+  position: absolute;
+  width: 530px;
+  height: 530px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f5f5f7 0%, #fafafa 55%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.02);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Dedicated Portrait Area (Perfect Circle 450px with 1:1 Aspect Ratio) */
+.portrait-display-area {
+  position: relative;
+  z-index: 2;
+  width: 450px;
+  height: 450px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  background-color: #f7f7f7;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.portrait-display-area:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 52px rgba(0, 0, 0, 0.1);
+}
+
+/* Authentic Black-and-White Portrait Centered in Circle */
+.portrait-real-img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 16%; /* Accurately centers face, hair, and graduation attire */
+  display: block;
+}
+
+/* ==========================================================================
+   Minimal Vertical 'SCROLL DOWN' on Right Edge
+   ========================================================================== */
+
+.hero-scroll-edge {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+}
+
+.scroll-edge-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.scroll-edge-link:hover {
+  color: var(--text-primary);
+}
+
+.scroll-edge-text {
+  writing-mode: vertical-rl;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.scroll-edge-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 28px;
+  position: relative;
+}
+
+.scroll-edge-arrow {
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .hero-columns-layout {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+  }
+
+  .hero-left-col {
+    align-items: flex-start;
+  }
+
+  .hero-art-stage {
+    height: 440px;
+  }
+
+  .oversized-circle-bg {
+    width: 410px;
+    height: 410px;
+  }
+
+  .portrait-display-area {
+    width: 350px;
+    height: 350px;
+  }
+
+  .hero-scroll-edge {
+    position: static;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-art-stage {
+    height: 330px;
+  }
+
+  .oversized-circle-bg {
+    width: 300px;
+    height: 300px;
+  }
+
+  .portrait-display-area {
+    width: 260px;
+    height: 260px;
+  }
+
+  .hero-headline {
+    font-size: 2.35rem;
+  }
 }
