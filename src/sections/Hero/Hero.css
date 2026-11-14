@@ -78,7 +78,7 @@
   border-radius: var(--radius-full) !important;
   border: none !important;
   box-shadow: none !important;
-  transition: all var(--transition-fast) !important;
+  transition: background-color var(--transition-fast), transform var(--transition-fast) !important;
 }
 
 .hero-minimal-cta:hover {
@@ -143,29 +143,20 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.02);
   z-index: 1;
   pointer-events: none;
-  transform: translateZ(0);
-  will-change: transform;
 }
 
-/* Dedicated Portrait Area (Perfect Circle 450px with 1:1 Aspect Ratio) */
+/* Dedicated Portrait Area (Perfect Circle with 1:1 Aspect Ratio) */
 .portrait-display-area {
   position: relative;
   z-index: 2;
-  width: 450px;
-  height: 450px;
+  width: 100%;
+  height: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 16px 44px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0, 0, 0, 0.04);
   background-color: #f7f7f7;
-  transform: translateZ(0);
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-}
-
-.portrait-display-area:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 22px 52px rgba(0, 0, 0, 0.1);
 }
 
 /* Authentic Black-and-White Portrait Centered in Circle */
@@ -248,11 +239,6 @@
     height: 410px;
   }
 
-  .portrait-display-area {
-    width: 350px;
-    height: 350px;
-  }
-
   .hero-scroll-edge {
     position: absolute;
     right: 30px;
@@ -268,11 +254,6 @@
   .oversized-circle-bg {
     width: 300px;
     height: 300px;
-  }
-
-  .portrait-display-area {
-    width: 260px;
-    height: 260px;
   }
 
   .hero-headline {

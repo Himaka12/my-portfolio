@@ -1,6 +1,7 @@
 import portraitImg from '../../assets/images/portrait.jpg';
 import Button from '../../components/Button';
 import { scrollTo } from '../../utils/smoothScroll';
+import InteractivePortrait from './InteractivePortrait';
 import './Hero.css';
 
 /**
@@ -31,8 +32,8 @@ function Hero() {
           <div className="hero-left-col">
             {/* Main Heading (Large bold typography, 2 lines on desktop) */}
             <h1 className="hero-headline">
-              <span className="headline-line">Building intelligent</span>
-              <span className="headline-line">experiences.</span>
+              <span className="headline-line">Building Intelligent</span>
+              <span className="headline-line">Experiences</span>
             </h1>
 
             {/* Description Paragraph */}
@@ -91,16 +92,8 @@ function Hero() {
               {/* Subtle Soft Circular Ambient Glow */}
               <div className="oversized-circle-bg" aria-hidden="true"></div>
 
-              {/* Dedicated Perfect Circular Portrait Area */}
-              <div className="portrait-display-area">
-                <img
-                  src={portraitImageSrc}
-                  alt="Portrait in graduation attire"
-                  className="portrait-real-img"
-                  loading="eager"
-                  decoding="async"
-                />
-              </div>
+              {/* Interactive 3D Circular Portrait Experience */}
+              <InteractivePortrait imageSrc={portraitImageSrc} />
             </div>
           </div>
         </div>

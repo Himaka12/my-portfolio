@@ -1,29 +1,31 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { SectionHeader } from '../../components/common';
 import { experience } from '../../data/experience';
 import './Experience.css';
 
+const FILTER_TABS = [
+  { id: 'all', label: 'All Milestones' },
+  { id: 'education', label: 'Education' },
+  { id: 'experience', label: 'Experience & Internships' },
+  { id: 'certification', label: 'Certifications' },
+  { id: 'achievement', label: 'Honors' },
+];
+
 function Experience() {
   const [filterType, setFilterType] = useState('all');
 
-  const filterTabs = [
-    { id: 'all', label: 'All Milestones' },
-    { id: 'education', label: 'Education' },
-    { id: 'experience', label: 'Experience & Internships' },
-    { id: 'certification', label: 'Certifications' },
-    { id: 'achievement', label: 'Honors' },
-  ];
-
-  const filteredItems =
-    filterType === 'all'
-      ? experience
-      : experience.filter((item) => item.type === filterType);
+  const filteredItems = useMemo(
+    () =>
+      filterType === 'all'
+        ? experience
+        : experience.filter((item) => item.type === filterType),
+    [filterType]
+  );
 
   return (
     <section id="experience" className="section experience-section">
       <div className="container">
         <SectionHeader
-          eyebrow="04 // PATHWAY & TIMELINE"
           title="Education, internships & technical credentials."
           description="A chronological record of academic coursework, engineering projects, and certifications."
         />
@@ -31,7 +33,7 @@ function Experience() {
         {/* Filter Tabs */}
         <div className="timeline-filter-bar">
           <div className="timeline-filter-track">
-            {filterTabs.map((tab) => (
+            {FILTER_TABS.map((tab) => (
               <button
                 key={tab.id}
                 type="button"

@@ -6,7 +6,6 @@ function About() {
     <section id="about" className="section about-section">
       <div className="container">
         <SectionHeader
-          eyebrow="01 // ABOUT ME"
           title="Driven by curiosity, grounded in engineering principles."
           description="A look into my academic journey, technical philosophy, and aspirations as a software engineer."
         />

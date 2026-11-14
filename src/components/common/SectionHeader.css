@@ -1,5 +1,5 @@
 .section-header-block {
-  margin-bottom: var(--spacing-3xl);
+  margin-bottom: var(--section-header-gap, var(--spacing-2xl));
   position: relative;
 }
 

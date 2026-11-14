@@ -1,0 +1,260 @@
+/* ==========================================================================
+   Interactive 3D Portrait Styling
+   Monochrome Apple-grade Precision & Depth
+   ========================================================================== */
+
+.portrait-interactive-container {
+  position: relative;
+  z-index: 2;
+  width: 450px;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  cursor: grab;
+}
+
+.portrait-interactive-container:active {
+  cursor: grabbing;
+}
+
+/* 3D Perspective Card Stage */
+.portrait-3d-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   Floating Personal Information Badges
+   Staggered entrance with true stereoscopic 3D parallax
+   ========================================================================== */
+
+.portrait-floating-badge {
+  position: absolute;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.95rem;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-full);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.07), 0 2px 6px rgba(0, 0, 0, 0.03);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+
+  /* Hidden resting state */
+  opacity: 0;
+  transform: translate3d(var(--badge-x, 0), calc(var(--badge-y, 0) + 12px), 32px) scale(0.92);
+
+  /* Quick, clean exit transition */
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  will-change: opacity, transform;
+}
+
+/* Staggered entrance on hover */
+.portrait-3d-wrapper.is-active .portrait-floating-badge {
+  opacity: 1;
+  transform: translate3d(var(--badge-x, 0), var(--badge-y, 0), 44px) scale(1);
+  transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1) var(--badge-delay, 0ms),
+              transform 0.38s cubic-bezier(0.16, 1, 0.3, 1) var(--badge-delay, 0ms);
+}
+
+.portrait-badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--text-primary);
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+
+.portrait-badge-text {
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* Discrete badge positions around the 450px circular perimeter */
+.badge-top-left {
+  top: 9%;
+  left: -24px;
+  --badge-x: 0px;
+  --badge-y: 0px;
+}
+
+.badge-top-right {
+  top: 14%;
+  right: -24px;
+  --badge-x: 0px;
+  --badge-y: 0px;
+}
+
+.badge-bottom-left {
+  bottom: 15%;
+  left: -28px;
+  --badge-x: 0px;
+  --badge-y: 0px;
+}
+
+.badge-bottom-right {
+  bottom: 9%;
+  right: -24px;
+  --badge-x: 0px;
+  --badge-y: 0px;
+}
+
+/* ==========================================================================
+   Dedicated Circular Portrait (Clipped 1:1 Aspect Ratio)
+   ========================================================================== */
+
+.portrait-display-area {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  background-color: #f7f7f7;
+  transition: box-shadow 0.3s ease;
+  transform: translateZ(0);
+}
+
+/* Authentic Black-and-White Portrait Centered in Circle */
+.portrait-real-img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 16%; /* Accurately centers face and graduation attire */
+  display: block;
+  transition: transform 0.25s ease-out;
+  will-change: transform;
+}
+
+/* Specular Radial Glare Overlay */
+.portrait-glare-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: opacity, background;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .portrait-interactive-container {
+    width: 350px;
+    height: 350px;
+  }
+
+  .portrait-floating-badge {
+    font-size: 11px;
+    padding: 0.38rem 0.8rem;
+  }
+
+  .badge-top-left {
+    top: 6%;
+    left: -14px;
+  }
+
+  .badge-top-right {
+    top: 10%;
+    right: -14px;
+  }
+
+  .badge-bottom-left {
+    bottom: 12%;
+    left: -18px;
+  }
+
+  .badge-bottom-right {
+    bottom: 6%;
+    right: -14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .portrait-interactive-container {
+    width: 260px;
+    height: 260px;
+  }
+
+  .portrait-floating-badge {
+    font-size: 10px;
+    padding: 0.32rem 0.65rem;
+    gap: 0.35rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  }
+
+  .portrait-badge-dot {
+    width: 4px;
+    height: 4px;
+  }
+
+  .badge-top-left {
+    top: -12px;
+    left: -8px;
+  }
+
+  .badge-top-right {
+    top: 36px;
+    right: -16px;
+  }
+
+  .badge-bottom-left {
+    bottom: 36px;
+    left: -16px;
+  }
+
+  .badge-bottom-right {
+    bottom: -12px;
+    right: -8px;
+  }
+}
+
+/* ==========================================================================
+   Reduced Motion Accessibility
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait-3d-wrapper,
+  .portrait-display-area,
+  .portrait-real-img,
+  .portrait-floating-badge {
+    transform: none !important;
+    transition: opacity 0.2s ease !important;
+  }
+
+  .portrait-3d-wrapper.is-active .portrait-floating-badge {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .portrait-glare-overlay {
+    display: none !important;
+  }
+}

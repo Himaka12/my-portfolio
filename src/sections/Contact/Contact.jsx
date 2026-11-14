@@ -38,7 +38,6 @@ function Contact() {
     <section id="contact" className="section contact-section">
       <div className="container">
         <SectionHeader
-          eyebrow="05 // GET IN TOUCH"
           title="Let's build something remarkable together."
           description="Whether you have an internship opportunity, an open-source collaboration, or simply want to talk tech—my inbox is always open."
         />

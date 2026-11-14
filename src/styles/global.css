@@ -13,7 +13,7 @@
 }
 
 html {
-  /* Set to auto so native smooth scrolling does not conflict with Lenis */
+  /* Clean native scrolling: hardware-accelerated directly on browser compositor */
   scroll-behavior: auto;
   font-size: 16px;
   background-color: var(--bg-primary);
@@ -113,8 +113,9 @@ main {
 
 .section {
   position: relative;
-  padding-top: var(--spacing-4xl);
-  padding-bottom: var(--spacing-4xl);
+  padding-top: var(--section-padding-top);
+  padding-bottom: var(--section-padding-bottom);
+  scroll-margin-top: 76px;
   background-color: #ffffff;
 }
 
@@ -175,9 +176,20 @@ main {
   }
 }
 
+@media (max-width: 1024px) {
+  :root {
+    --section-padding-top: 2.75rem;
+    --section-padding-bottom: 4rem;
+    --section-header-gap: 2rem;
+  }
+}
+
 @media (max-width: 768px) {
   :root {
     --container-padding: 1.5rem;
     --spacing-4xl: 3.5rem;
+    --section-padding-top: 2.25rem;
+    --section-padding-bottom: 3.25rem;
+    --section-header-gap: 1.75rem;
   }
 }

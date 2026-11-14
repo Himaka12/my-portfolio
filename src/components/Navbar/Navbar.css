@@ -9,7 +9,7 @@
   width: 100%;
   background-color: #ffffff;
   padding: 1.5rem 0 1.25rem;
-  transition: padding var(--transition-fast);
+  contain: paint;
 }
 
 .navbar-container {
@@ -46,6 +46,47 @@
   display: flex;
   align-items: center;
   gap: 2.25rem;
+  position: relative;
+}
+
+/* SVG Motion Trail Overlay: connects dot centers horizontally */
+.nav-motion-trail-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 2;
+}
+
+.nav-trail-line {
+  stroke: var(--text-primary);
+  stroke-width: 1.5px;
+  stroke-linecap: round;
+  stroke-dasharray: var(--trail-length);
+  stroke-dashoffset: var(--trail-length);
+  animation: drawTrail 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+             fadeTrail 0.18s ease 0.25s forwards;
+}
+
+@keyframes drawTrail {
+  from {
+    stroke-dashoffset: var(--trail-length);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeTrail {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .nav-item {
@@ -76,13 +117,31 @@
   font-weight: 700;
 }
 
-/* Minimalist Dot Below Active Link (Reference 3) */
-.nav-active-dot {
+/* Minimalist Dot Below Each Navigation Link */
+.nav-dot {
   position: absolute;
-  bottom: -9px;
-  font-size: 12px;
-  line-height: 1;
-  color: var(--text-primary);
+  bottom: -8px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background-color: var(--text-primary);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.nav-dot.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Coordinated activation when trail line is traveling */
+.nav-list.has-trail .nav-dot.active {
+  transition: opacity 0.18s ease 0.18s, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1) 0.18s;
 }
 
 /* Mobile Toggle */
@@ -103,7 +162,7 @@
   width: 22px;
   height: 1.5px;
   background-color: var(--text-primary);
-  transition: all var(--transition-normal);
+  transition: transform var(--transition-normal);
   transform-origin: center;
 }
 
@@ -168,5 +227,16 @@
 
   .mobile-toggle {
     display: flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-trail-line {
+    animation: none !important;
+    display: none !important;
+  }
+
+  .nav-dot {
+    transition: none !important;
   }
 }

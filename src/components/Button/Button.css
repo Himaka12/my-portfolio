@@ -9,7 +9,7 @@
   text-decoration: none;
   cursor: pointer;
   white-space: nowrap;
-  transition: all var(--transition-fast);
+  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast);
   border: 1px solid transparent;
   user-select: none;
   position: relative;

@@ -1,26 +1,28 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { SectionHeader } from '../../components/common';
 import { skillCategories } from '../../data/skills';
 import './Skills.css';
 
+const CATEGORIES = [
+  { id: 'all', label: 'All Disciplines' },
+  ...skillCategories.map((cat) => ({ id: cat.id, label: cat.title })),
+];
+
 function Skills() {
   const [activeCategory, setActiveCategory] = useState('all');
 
-  const categories = [
-    { id: 'all', label: 'All Disciplines' },
-    ...skillCategories.map((cat) => ({ id: cat.id, label: cat.title })),
-  ];
-
-  const displayedCategories =
-    activeCategory === 'all'
-      ? skillCategories
-      : skillCategories.filter((cat) => cat.id === activeCategory);
+  const displayedCategories = useMemo(
+    () =>
+      activeCategory === 'all'
+        ? skillCategories
+        : skillCategories.filter((cat) => cat.id === activeCategory),
+    [activeCategory]
+  );
 
   return (
     <section id="skills" className="section skills-section">
       <div className="container">
         <SectionHeader
-          eyebrow="02 // TECHNICAL CAPABILITIES"
           title="Engineered with modern tools, frameworks & algorithms."
           description="A comprehensive overview of my current technical stack across programming, full-stack development, and artificial intelligence."
         />
@@ -28,7 +30,7 @@ function Skills() {
         {/* Category Filter Pills */}
         <div className="skills-filter-container">
           <div className="skills-filter-track">
-            {categories.map((cat) => (
+            {CATEGORIES.map((cat) => (
               <button
                 key={cat.id}
                 type="button"
